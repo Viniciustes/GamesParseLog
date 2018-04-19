@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GamesParseLog.Application.ViewsModels.FileViewModel>
+
+@{
+    ViewData["Title"] = "Parse Log Games";
+}
+
+<h2>Arquivos</h2>
+<br />
+@using (Html.BeginForm("AddFile", "Home", FormMethod.Post, new { @id = "formticket", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label for="exampleInputFile">Arquivo de Entrada</label>
+        <input type="file" name="file" class="form-control-file" id="inputFile">
+        <small id="fileHelp" class="form-text text-muted">Selecionar o Arquivo para processamento.</small>
+    </div>
+    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;Adicionar Arquivo</button>
+    <br />
+    <br />
+    <section class="box-typical">
+        <div class="table-responsive">
+            <p>Últimos Arquivos</p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nome Arquivo</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.FileName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DateFile)</td>
+
+                            @*<td class="table-icon-cell">
+                                    @(!item.StatusProcessamentoRm ? Html.ActionLink("Processar Arquivo", "ProcessarArquivo", new { id = item.Id }, new { @class = "btn btn-default btn-rounded btn-sm" }) : Html.ActionLink("Processado", "", new { }, new { @class = "btn btn-default btn-rounded btn-sm", disabled = "disabled" }))
+                                </td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+}
+
+
+@section scripts {
+
+    <script>$("#formticket").validate();</script>
+}
+<script>
+      $("#inputFile").change(function () {
+        var fileName = $(this).val();
+        var arrFileName = fileName.split('\\');
+        var file = "";
+
+        if (arrFileName.length > 0) {
+            file = arrFileName[arrFileName.length - 1];
+        } else {
+            file = "No file chosen";
+        }
+
+        var div = $(this).closest("div.fileinput");
+        var span = $(div).find("span.fileinput-new");
+        $(span).html('<span class="glyphicon glyphicon-file"></span> ' + file);
+    });
+</script>
+
