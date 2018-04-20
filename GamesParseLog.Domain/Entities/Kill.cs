@@ -7,8 +7,12 @@ namespace GamesParseLog.Domain.Entities
     {
         [Key]
         public int IdKill { get; set; }
-        public Player Player { get; set; }
-        public int Kills { get; set; }
         public EMeansOfDeath TypeOfDeath { get; set; }
+
+        public int IdGame { get; set; }
+        public Game Game { get; set; }
+
+        public int IdPlayer { get; set; }
+        public Player Player { get; set; }
     }
 }

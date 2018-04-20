@@ -44,8 +44,11 @@
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\ServicesFiles\ServiceFileRead.cs" />
+    <Compile Include="Services\ServicesFiles\ServiceFileSystem.cs" />
+    <Compile Include="Services\ServicesFiles\ServiceFileUpload.cs" />
+    <Compile Include="Services\ServicesFiles\ServiceVerifyExtensionFileParse.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\GamesParseLog.Domain\GamesParseLog.Domain.csproj">
       <Project>{DE35BAB7-F3C3-4B5C-94F0-E20ED8B827E9}</Project>

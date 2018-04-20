@@ -48,13 +48,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contexts\ContextDb.cs" />
+    <Compile Include="Migrations\201804200050403_Initial.cs" />
+    <Compile Include="Migrations\201804200050403_Initial.Designer.cs">
+      <DependentUpon>201804200050403_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryFileParse.cs" />
     <Compile Include="Repositories\RepositoryGame.cs" />
     <Compile Include="Repositories\RepositoryKill.cs" />
     <Compile Include="Repositories\RepositoryPlayer.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -64,6 +68,11 @@
       <Project>{DE35BAB7-F3C3-4B5C-94F0-E20ED8B827E9}</Project>
       <Name>GamesParseLog.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804200050403_Initial.resx">
+      <DependentUpon>201804200050403_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

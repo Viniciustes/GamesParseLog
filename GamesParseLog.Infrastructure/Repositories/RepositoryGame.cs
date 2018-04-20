@@ -1,6 +1,7 @@
 ﻿using GamesParseLog.Domain.Entities;
 using GamesParseLog.Domain.Interfaces.Repositories;
 using GamesParseLog.Infrastructure.Contexts;
+using System.Linq;
 
 namespace GamesParseLog.Infrastructure.Repositories
 {
@@ -18,5 +19,7 @@ namespace GamesParseLog.Infrastructure.Repositories
             _contextDb.Game.Add(game);
             _contextDb.SaveChanges();
         }
+
+        public Game GetByName(string name) => _contextDb.Game.Where(x => x.NameGame == name).FirstOrDefault();
     }
 }

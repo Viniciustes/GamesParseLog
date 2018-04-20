@@ -5,5 +5,6 @@ namespace GamesParseLog.Domain.Interfaces.Repositories
     public interface IRepositoryGame
     {
         void SaveGame(Game game);
+        Game GetByName(string name);
     }
 }
