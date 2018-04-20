@@ -2,7 +2,6 @@
 using GamesParseLog.Domain.Interfaces.Repositories;
 using GamesParseLog.Service.Interfaces;
 using GamesParseLog.Service.Services.ServicesFiles;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
@@ -39,7 +38,6 @@ namespace GamesParseLog.Service.Services
             _repositoryFileParse.SaveFileParse(fileParse);
 
             return true;
-            throw new NotImplementedException();
         }
 
         private bool FileIsValid(HttpFileCollectionBase files)
@@ -50,7 +48,8 @@ namespace GamesParseLog.Service.Services
             var extensionReplace = extension.Replace(".", "");
             var name = httpPostedFileBase.FileName;
 
-            return ServiceVerifyExtensionFileParse.VerifyExtensionFileParse(extensionReplace) && FileExists(name);
+            return ServiceVerifyExtensionFileParse.VerifyExtensionFileParse(extensionReplace);
+                //&& FileExists(name);
         }
 
         private bool FileExists(string name) => _repositoryFileParse.FindByName(name) == null;

@@ -13,7 +13,7 @@ namespace GamesParseLog.Infrastructure.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201804200050403_Initial"; }
+            get { return "201804201230042_Initial"; }
         }
         
         string IMigrationMetadata.Source
